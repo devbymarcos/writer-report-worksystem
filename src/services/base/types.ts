@@ -24,7 +24,7 @@ export interface IRegister {
   installationConditionsExposureToRainOrSun: string;
   hrInterviewEquipmentFunctioning: string;
   hrInterviewSoftwareQuestions: string;
-  sealNumber: string;
+  sealWork: string;
   nonConformitiesDescription: string;
   improvementSuggestions: string;
 }

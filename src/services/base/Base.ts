@@ -28,6 +28,7 @@ class Base {
   hrInterviewEquipmentFunctioning!: string;
   hrInterviewSoftwareQuestions!: string;
   sealNumber!: string;
+  sealWork!: string;
   nonConformitiesDescription!: string;
   improvementSuggestions!: string;
 }

@@ -29,6 +29,7 @@ class Register extends Base {
     hrInterviewEquipmentFunctioning,
     hrInterviewSoftwareQuestions,
     sealNumber,
+    sealWork,
     nonConformitiesDescription,
     improvementSuggestions,
   }: IRegister) {
@@ -64,6 +65,7 @@ class Register extends Base {
     this.hrInterviewEquipmentFunctioning = hrInterviewEquipmentFunctioning;
     this.hrInterviewSoftwareQuestions = hrInterviewSoftwareQuestions;
     this.sealNumber = sealNumber;
+    this.sealWork = sealWork;
     this.nonConformitiesDescription = nonConformitiesDescription;
     this.improvementSuggestions = improvementSuggestions;
   }
@@ -105,6 +107,7 @@ class Register extends Base {
       hrInterviewEquipmentFunctioning: this.hrInterviewEquipmentFunctioning,
       hrInterviewSoftwareQuestions: this.hrInterviewSoftwareQuestions,
       sealNumber: this.sealNumber,
+      sealWork: this.sealWork,
       nonConformitiesDescription: this.nonConformitiesDescription,
       improvementSuggestions: this.improvementSuggestions,
     });

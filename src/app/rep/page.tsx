@@ -90,7 +90,7 @@ const Rep = () => {
       hrInterviewSoftwareQuestions: String(
         formData.get("hrInterviewSoftwareQuestions")
       ),
-      sealNumber: String(formData.get("sealNumber")),
+      sealWork: String(formData.get("sealWork")),
       nonConformitiesDescription: String(
         formData.get("nonConformitiesDescription")
       ),
@@ -446,7 +446,7 @@ const Rep = () => {
         </div>
         <div className="mb-3">
           <Label>Numero lacre Work:</Label>
-          <Input name="sealNumber" type="text" />
+          <Input name="sealWork" type="text" />
         </div>
         <div className="mb-3">
           <Label>Descreva as não conformidades:</Label>

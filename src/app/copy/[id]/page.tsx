@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { formatDate } from "@/functions/formatDate";
 import ListItem from "@/services/list-Item/ListItem";
@@ -12,6 +13,7 @@ const Copy = ({ params }: any) => {
     const list = new ListItem(Number(params.id)).execute();
 
     setText(`
+    
     Chamado/Cliente:: ${list.numberTicket} - ${list.titleTicket}
     Data: ${formatDate(String(list.date))}
     Horário: ${list.timeStart} as ${list.timeStop}
@@ -26,21 +28,21 @@ const Copy = ({ params }: any) => {
     Marca do Relógio: ${list.brand}
     IP: ${list.ip}
     Número de série: ${list.ns}
-    Lacre Fiscal: ${list.sealNumber}
+    Lacre Fiscal: ${list.fiscalSeal}
     ===============================
-    Ações de Limpeza: 
+    ## Ações de Limpeza: 
     Estética e Externa (Silicone): ${list.cleaningExternal}
     Compartimento de bobina: ${list.cleaningPrinter}
     Cabeça de impressão: ${list.cleaningSpoolCompartment}
     ===============================
-    Vistoria de recursos essenciais
+    ## Vistoria de recursos essenciais
     Display:  ${list.inspectionDisplay}
     Impressor: :  ${list.inspectionPrinter}
-    Tecladdo:  ${list.inspectionKeyboard}
+    Teclado:  ${list.inspectionKeyboard}
     Leitores (carão e biometria): ${list.inspectionReadersCardAndBiometrics}
     Guilhotina ou serrilha: : ${list.inspectionCutterOrPerforator}
     ===============================
-    Condições de Instalação
+    ## Condições de Instalação
     Fixação do equipamento: ${list.installationConditionsEquipmentMounting}
     Organização cabos de rede/energia: ${
       list.installationConditionsCableOrganization
@@ -48,11 +50,10 @@ const Copy = ({ params }: any) => {
     Canaletas e Eletrodutos: ${list.installationConditionsConduitsAndRaceways}
     Exposição a Chuva/Sol:  ${list.installationConditionsExposureToRainOrSun}
     ===============================
-    Entrevista com Rh
+    ## Entrevista com Rh
     Funcionamento do equipamento: ${list.hrInterviewEquipmentFunctioning}
     Dúvidas no software: ${list.hrInterviewSoftwareQuestions}
     ===============================
-    Numero lacre Work: ${list.sealNumber}
     Numero lacre Work: ${list.sealWork}
     ===============================
     Descreva as não conformidades:  ${list.nonConformitiesDescription}
@@ -64,12 +65,28 @@ const Copy = ({ params }: any) => {
     `);
   }
 
+  const copyToClipboard = async () => {
+    try {
+      const contentToCopy = text;
+      await navigator.clipboard.writeText(contentToCopy);
+      alert("Conteúdo copiado para a área de transferência!");
+    } catch (err) {
+      alert(err);
+      console.error("Erro ao copiar para a área de transferência:", err);
+    }
+  };
+
   useEffect(() => {
     getCopy();
   }, []);
   return (
     <>
-      <Textarea className="h-screen" defaultValue={text} />
+      <div className="px-2">
+        <Textarea className="h-screen mb-4" defaultValue={text} />
+        <Button className="bg-blue-500 w-full h-11" onClick={copyToClipboard}>
+          Copy
+        </Button>
+      </div>
     </>
   );
 };
