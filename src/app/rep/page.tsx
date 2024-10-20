@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import Register from "@/services/register/Register";
+import Register from "@/services/rep/register/Register";
 
 const Rep = () => {
   const [timeStart, setTimeStart] = useState<string>("");
@@ -46,6 +46,7 @@ const Rep = () => {
 
     // Criação da instância do objeto de registro
     const registerInstance = new Register({
+      type: String(formData.get("type")),
       numberTicket: Number(formData.get("numberTicket")),
       titleTicket: String(formData.get("titleTicket")),
       date: new Date(formData.get("date") as string),
@@ -123,6 +124,7 @@ const Rep = () => {
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit}>
+        <input type="hidden" name="type" value="preventiva" />
         <div className="mb-3">
           <div className="">
             <Label>Hora Inicial:</Label>

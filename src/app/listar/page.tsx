@@ -1,5 +1,5 @@
 "use client";
-import List from "@/services/list/List";
+import List from "@/services/rep/list/List";
 import React, { useEffect, useState } from "react";
 import {
   Table,
@@ -41,7 +41,9 @@ const ListPage = () => {
                   <TableCell className="w-full">{item.titleTicket}</TableCell>
                   <TableCell>
                     <Button className="bg-blue-400" asChild>
-                      <Link href={`/copy/${item.numberTicket}`}>Ver copy</Link>
+                      <Link href={`/copy/${item.type}/${item.numberTicket}`}>
+                        Ver copy
+                      </Link>
                     </Button>
                   </TableCell>
                 </TableRow>

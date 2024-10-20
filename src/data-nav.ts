@@ -7,4 +7,8 @@ export const dataNav = [
     title: "Preventiva Rep",
     path: "/rep",
   },
+  {
+    title: "Remoto",
+    path: "/remoto",
+  },
 ];

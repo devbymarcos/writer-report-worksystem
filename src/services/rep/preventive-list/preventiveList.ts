@@ -1,19 +1,20 @@
+import { IPreventiva } from "@/types/types";
 import Base from "../base/Base";
-import { IRegister } from "../base/types";
 
-class ListItem extends Base {
+class PreventiveList extends Base {
   constructor(numberTicket: number) {
     super();
     this.numberTicket = numberTicket;
   }
 
-  execute(): IRegister {
+  execute(): IPreventiva {
     // Recupera os dados do localStorage
     const storedData = localStorage.getItem("writerReportApp");
 
     // Verifica se existe algo armazenado
     if (!storedData) {
       return {
+        type: "",
         numberTicket: 0,
         titleTicket: "",
         date: new Date(),
@@ -58,4 +59,4 @@ class ListItem extends Base {
   }
 }
 
-export default ListItem;
+export default PreventiveList;

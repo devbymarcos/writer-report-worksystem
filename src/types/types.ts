@@ -1,4 +1,5 @@
-export interface IRegister {
+export interface IPreventiva {
+  type: string;
   numberTicket: number;
   titleTicket: string;
   date: Date;
@@ -27,4 +28,16 @@ export interface IRegister {
   sealWork: string;
   nonConformitiesDescription: string;
   improvementSuggestions: string;
+}
+
+export interface IRemoto {
+  type: string;
+  numberTicket: number;
+  titleTicket: string;
+  date: Date; // Alterado para string para compatibilidade com input type="date"
+  timeStart: string;
+  timeStop: string;
+  nameBusiness: string;
+  completedActions: string;
+  pendingOrNextActions: string;
 }

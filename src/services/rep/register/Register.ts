@@ -1,8 +1,9 @@
 import Base from "../base/Base";
-import { IRegister } from "../base/types";
+import { IPreventiva } from "@/types/types";
 
 class Register extends Base {
   constructor({
+    type,
     numberTicket,
     titleTicket,
     date,
@@ -31,8 +32,9 @@ class Register extends Base {
     sealWork,
     nonConformitiesDescription,
     improvementSuggestions,
-  }: IRegister) {
+  }: IPreventiva) {
     super();
+    this.type = type;
     this.numberTicket = numberTicket;
     this.titleTicket = titleTicket;
     this.date = date;
@@ -74,6 +76,7 @@ class Register extends Base {
     );
 
     existingRecords.push({
+      type: this.type,
       numberTicket: this.numberTicket,
       titleTicket: this.titleTicket,
       date: this.date,
