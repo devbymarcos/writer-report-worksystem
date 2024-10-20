@@ -138,7 +138,7 @@ const Rep = () => {
             </div>
           </div>
           <div className="">
-            <Label>Hora Fina:</Label>
+            <Label>Hora Final:</Label>
             <div className="flex gap-2 items-center">
               <Input
                 name="timeStop"
