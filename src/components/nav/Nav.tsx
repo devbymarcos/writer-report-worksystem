@@ -9,16 +9,16 @@ const Nav = ({ isOpen, onClick }: any) => {
     <motion.div
       layout
       style={{
-        left: isOpen ? -250 : 0,
+        left: isOpen == false ? "-250px" : "0px",
       }}
-      className="fixed w-[250px] bg-white h-screen top-0 p-4 border-r-2 z-10 "
+      className="fixed w-[250px]   bg-white h-screen top-0 p-4 border-r-2 z-10 "
     >
       <h1 className="font-bold  text-lg mb-6">Writer report</h1>
       <nav>
         <ul>
-          {dataNav.map((item) => {
+          {dataNav.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <Link
                   className="bg-zinc-200 overflow-hidden block mb-2 px-4 py-2 rounded-md hover:bg-slate-400 hover:text-white"
                   href={item.path}

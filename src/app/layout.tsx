@@ -19,7 +19,7 @@ export default function RootLayout({
       <body>
         <Header onClick={openSideBar} />
         <Nav isOpen={isOpen} onClick={openSideBar} />
-        <section className=" container mx-auto pt-11 ">{children}</section>
+        <section className=" container  pt-11 ">{children}</section>
       </body>
     </html>
   );
