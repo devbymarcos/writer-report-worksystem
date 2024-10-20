@@ -39,7 +39,7 @@ class ListItem extends Base {
         installationConditionsExposureToRainOrSun: "",
         hrInterviewEquipmentFunctioning: "",
         hrInterviewSoftwareQuestions: "",
-        sealNumber: "",
+        sealWork: "",
         nonConformitiesDescription: "",
         improvementSuggestions: "",
       }; // Caso não tenha nada, retorna null ou outra abordagem

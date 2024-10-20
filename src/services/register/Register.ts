@@ -28,7 +28,6 @@ class Register extends Base {
     installationConditionsExposureToRainOrSun,
     hrInterviewEquipmentFunctioning,
     hrInterviewSoftwareQuestions,
-    sealNumber,
     sealWork,
     nonConformitiesDescription,
     improvementSuggestions,
@@ -64,7 +63,6 @@ class Register extends Base {
       installationConditionsExposureToRainOrSun;
     this.hrInterviewEquipmentFunctioning = hrInterviewEquipmentFunctioning;
     this.hrInterviewSoftwareQuestions = hrInterviewSoftwareQuestions;
-    this.sealNumber = sealNumber;
     this.sealWork = sealWork;
     this.nonConformitiesDescription = nonConformitiesDescription;
     this.improvementSuggestions = improvementSuggestions;

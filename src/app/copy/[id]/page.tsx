@@ -6,7 +6,13 @@ import { formatDate } from "@/functions/formatDate";
 import ListItem from "@/services/list-Item/ListItem";
 import React, { useEffect, useState } from "react";
 
-const Copy = ({ params }: any) => {
+interface UrlParams {
+  params: {
+    id: string;
+  };
+}
+
+const Copy = ({ params }: UrlParams) => {
   const [text, setText] = useState("");
 
   function getCopy() {

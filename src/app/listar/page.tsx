@@ -1,6 +1,6 @@
 "use client";
 import List from "@/services/list/List";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -12,9 +12,14 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-const Listar = () => {
-  const list = new List().execute();
-  console.log(list);
+
+const ListPage = () => {
+  const [listdata, setListData] = useState([]);
+
+  useEffect(() => {
+    const list = new List().execute();
+    setListData(list);
+  }, []);
 
   return (
     <>
@@ -29,7 +34,7 @@ const Listar = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {list.map((item: any) => {
+            {listdata.map((item: any) => {
               return (
                 <TableRow key={item.numberTicket}>
                   <TableCell>{item.numberTicket}</TableCell>
@@ -49,4 +54,4 @@ const Listar = () => {
   );
 };
 
-export default Listar;
+export default ListPage;

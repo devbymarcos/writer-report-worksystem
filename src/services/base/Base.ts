@@ -1,5 +1,3 @@
-import { IRegister } from "../base/types";
-
 class Base {
   numberTicket!: number;
   titleTicket!: string;
