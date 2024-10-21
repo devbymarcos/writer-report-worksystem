@@ -15,6 +15,7 @@ class PreventiveList extends Base {
     if (!storedData) {
       return {
         type: "",
+        operator: "",
         numberTicket: 0,
         titleTicket: "",
         date: new Date(),

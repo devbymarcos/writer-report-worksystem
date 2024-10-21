@@ -1,7 +1,7 @@
 import { formatDate } from "@/functions/formatDate";
-import { IPreventivaTemplate } from "./types";
+import { IPreventiva } from "@/types/types";
 
-export function preventivaRepTemplate(text: IPreventivaTemplate) {
+export function preventivaRepTemplate(text: IPreventiva) {
   return `    
     Chamado/Cliente: ${text.numberTicket} - ${text.titleTicket}
     Data: ${formatDate(String(text.date))}
@@ -48,20 +48,5 @@ export function preventivaRepTemplate(text: IPreventivaTemplate) {
     Descreva as não conformidades:  ${text.nonConformitiesDescription}
     ===============================
     Descreva as não conformidades:  ${text.improvementSuggestions}
-`;
-}
-export function remote(text: IPreventivaTemplate) {
-  return `    
-    Chamado/Cliente: ${text.numberTicket} - ${text.titleTicket}
-    Data: ${formatDate(String(text.date))}
-    Horário: ${text.timeStart} as ${text.timeStop}
-    Técnico: Marcos Lopes 
-    Tipo: Preventiva
-    Acompanhou:
-
-    1 - Descrição das ações realizadas:
-
-    
-    2 -  Pendencias ou próximas ações:
 `;
 }
