@@ -52,7 +52,13 @@ const CopyPage = ({ params }: UrlParams) => {
   return (
     <>
       <div className="px-2 relative">
-        <Textarea className="h-screen  mb-4" defaultValue={text} />
+        <Textarea
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+          className="h-screen  mb-4"
+          defaultValue={text}
+        />
         <Button
           variant="outline"
           className="  fixed bottom-32 bg-indigo-400 text-white right-6 h-11"
