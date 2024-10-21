@@ -4,6 +4,7 @@ import { IRemoto } from "@/types/types";
 class Register extends Base {
   constructor({
     type,
+    operator,
     numberTicket,
     titleTicket,
     date,
@@ -15,6 +16,7 @@ class Register extends Base {
   }: IRemoto) {
     super();
     this.type = type;
+    this.operator = operator;
     this.numberTicket = numberTicket;
     this.titleTicket = titleTicket;
     this.date = date;

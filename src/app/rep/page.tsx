@@ -47,6 +47,7 @@ const Rep = () => {
     // Criação da instância do objeto de registro
     const registerInstance = new Register({
       type: String(formData.get("type")),
+      operator: String(formData.get("operator")),
       numberTicket: Number(formData.get("numberTicket")),
       titleTicket: String(formData.get("titleTicket")),
       date: new Date(formData.get("date") as string),
@@ -124,7 +125,7 @@ const Rep = () => {
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit}>
-        <input type="hidden" name="type" value="preventiva" />
+        <input type="hidden" name="type" value="preventive" />
         <div className="mb-3">
           <div className="">
             <Label>Hora Inicial:</Label>
@@ -135,6 +136,7 @@ const Rep = () => {
                 onChange={(e) => {
                   setTimeStart(e.target.value);
                 }}
+                required
                 value={timeStart}
               />
             </div>
@@ -148,6 +150,7 @@ const Rep = () => {
                 onChange={(e) => {
                   setTimeStop(e.target.value);
                 }}
+                required
                 type="text"
               />
             </div>
@@ -466,7 +469,7 @@ const Rep = () => {
           />
         </div>
         <Button type="submit" className="bg-green-600">
-          Enviar
+          Salvar
         </Button>
       </form>
     </div>

@@ -1,5 +1,6 @@
 export interface IPreventiva {
   type: string;
+  operator: string;
   numberTicket: number;
   titleTicket: string;
   date: Date;
@@ -32,6 +33,7 @@ export interface IPreventiva {
 
 export interface IRemoto {
   type: string;
+  operator: string;
   numberTicket: number;
   titleTicket: string;
   date: Date; // Alterado para string para compatibilidade com input type="date"

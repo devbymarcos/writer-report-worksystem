@@ -7,6 +7,7 @@ import PreventiList from "@/services/rep/preventive-list/preventiveList";
 import { preventivaRepTemplate } from "@/templates/preventivaRep";
 import { remoteTemplate } from "@/templates/remote";
 import React, { useEffect, useState } from "react";
+import { Copy } from "lucide-react";
 
 interface UrlParams {
   params: {
@@ -15,12 +16,12 @@ interface UrlParams {
   };
 }
 
-const Copy = ({ params }: UrlParams) => {
+const CopyPage = ({ params }: UrlParams) => {
   const [text, setText] = useState("");
 
   function getCopy() {
     switch (params.type) {
-      case "preventiva":
+      case "preventive":
         const preventlist = new PreventiList(Number(params.id)).execute();
         setText(preventivaRepTemplate(preventlist));
 
@@ -50,14 +51,19 @@ const Copy = ({ params }: UrlParams) => {
   }, []);
   return (
     <>
-      <div className="px-2">
-        <Textarea className="h-screen mb-4" defaultValue={text} />
-        <Button className="bg-blue-500 w-full h-11" onClick={copyToClipboard}>
-          Copy
+      <div className="px-2 relative">
+        <Textarea className="h-screen  mb-4" defaultValue={text} />
+        <Button
+          variant="outline"
+          className="  fixed bottom-32 bg-indigo-400 text-white right-6 h-11"
+          onClick={copyToClipboard}
+        >
+          <Copy />
+          copiar
         </Button>
       </div>
     </>
   );
 };
 
-export default Copy;
+export default CopyPage;

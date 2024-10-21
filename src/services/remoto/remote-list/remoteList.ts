@@ -15,6 +15,7 @@ class RemoteList extends Base {
     if (!storedData) {
       return {
         type: "",
+        operator: "",
         numberTicket: 0,
         titleTicket: "",
         date: new Date(),
@@ -23,7 +24,7 @@ class RemoteList extends Base {
         nameBusiness: "",
         completedActions: "",
         pendingOrNextActions: "",
-      }; // Caso não tenha nada, retorna null ou outra abordagem
+      };
     }
 
     // Converte o JSON armazenado de volta para um array de objetos

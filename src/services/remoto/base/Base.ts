@@ -1,5 +1,6 @@
 class Base {
   type!: string;
+  operator!: string;
   numberTicket!: number;
   titleTicket!: string;
   date!: Date; // Alterado para string para compatibilidade com input type="date"

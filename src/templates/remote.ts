@@ -1,12 +1,12 @@
 import { formatDate } from "@/functions/formatDate";
-import { IRemotoTemplate } from "./types";
+import { IRemoto } from "@/types/types";
 
-export function remoteTemplate(text: IRemotoTemplate) {
+export function remoteTemplate(text: IRemoto) {
   return `    
     Chamado/Cliente: ${text.numberTicket} - ${text.titleTicket}
     Data: ${formatDate(String(text.date))}
     Horário: ${text.timeStart} as ${text.timeStop}
-    Técnico: Marcos Lopes 
+    Técnico: ${text.operator}
     Tipo: Preventiva
     Acompanhou:
 
