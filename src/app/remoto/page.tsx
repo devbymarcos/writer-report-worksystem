@@ -61,7 +61,7 @@ const Rep = () => {
   return (
     <div className="px-4 pb-10 ">
       <div className="">
-        <h1 className="font-bold text-lg">Preventiva Rep</h1>
+        <h1 className="font-bold text-lg">Atendimento Remoto</h1>
       </div>
       <div className="flex gap-2 my-4">
         <Button
