@@ -39,6 +39,7 @@ const Rep = () => {
     // Criação da instância do objeto de registro
     const registerInstance = new Register({
       type: String(formData.get("type")),
+      operator: String(formData.get("operator")),
       numberTicket: Number(formData.get("numberTicket")),
       titleTicket: String(formData.get("titleTicket")),
       date: new Date(formData.get("date") as string),
@@ -117,7 +118,10 @@ const Rep = () => {
           <Label>Data:</Label>
           <Input name="date" type="date" />
         </div>
-
+        <div className="mb-3">
+          <Label>Técnico:</Label>
+          <Input name="operator" type="text" />
+        </div>
         <div className="mb-3">
           <Label>Empresa Contratante:</Label>
           <Input name="nameBusiness" type="text" />

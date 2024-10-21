@@ -168,7 +168,10 @@ const Rep = () => {
           <Label>Data:</Label>
           <Input name="date" type="date" />
         </div>
-
+        <div className="mb-3">
+          <Label>Técnico:</Label>
+          <Input name="operator" type="text" />
+        </div>
         <div className="mb-3">
           <Label>Empresa Contratante:</Label>
           <Input name="nameBusiness" type="text" />
