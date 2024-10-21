@@ -143,7 +143,7 @@ const Rep = () => {
           />
         </div>
         <Button type="submit" className="bg-green-600">
-          Enviar
+          Salvar
         </Button>
       </form>
     </div>
