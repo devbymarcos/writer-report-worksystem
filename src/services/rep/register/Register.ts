@@ -75,7 +75,11 @@ class Register extends Base {
       localStorage.getItem("writerReportApp") || "[]"
     );
 
-    existingRecords.push({
+    const updatedRecords = existingRecords.filter(
+      (record: any) => record.numberTicket !== this.numberTicket
+    );
+
+    updatedRecords.push({
       type: this.type,
       numberTicket: this.numberTicket,
       titleTicket: this.titleTicket,
@@ -113,7 +117,7 @@ class Register extends Base {
       improvementSuggestions: this.improvementSuggestions,
     });
 
-    localStorage.setItem("writerReportApp", JSON.stringify(existingRecords));
+    localStorage.setItem("writerReportApp", JSON.stringify(updatedRecords));
   }
 }
 

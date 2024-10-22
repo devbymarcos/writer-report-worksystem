@@ -2,15 +2,47 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Register from "@/services/remoto/register/Register";
+import { useSearchParams, useRouter } from "next/navigation";
+import GetRemoteId from "@/services/remoto/list-single/GetRemoteId";
+import { formatDateUI } from "@/functions/formatDate";
 
 const Rep = () => {
+  const searchParams = useSearchParams();
+  const { push } = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
+
   const [timeStart, setTimeStart] = useState<string>("");
   const [timeStop, setTimeStop] = useState<string>("");
-  const formRef = useRef<HTMLFormElement>(null);
+  const [type, setType] = useState<string>("");
+  const [operator, setOperator] = useState<string>("");
+  const [numberTicket, setNumberTicket] = useState<number>();
+  const [titleTicket, setTitleTicket] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [nameBusiness, setNameBusiness] = useState<string>("");
+  const [completedActions, setCompletedActions] = useState<string>("");
+  const [pendingOrNextActions, setPendingOrNextActions] = useState<string>("");
+
+  function loadData() {
+    const ticketData = new GetRemoteId(
+      Number(searchParams.get("ticket"))
+    ).execute();
+    if (ticketData) {
+      setType(ticketData.type);
+      setOperator(ticketData.operator);
+      setNumberTicket(ticketData.numberTicket);
+      setTitleTicket(ticketData.titleTicket);
+      setDate(ticketData.date);
+      setTimeStart(ticketData.timeStart);
+      setTimeStop(ticketData.timeStop);
+      setNameBusiness(ticketData.nameBusiness);
+      setCompletedActions(ticketData.completedActions);
+      setPendingOrNextActions(ticketData.pendingOrNextActions);
+    }
+  }
 
   function timeStartexecute() {
     const now = new Date();
@@ -42,7 +74,7 @@ const Rep = () => {
       operator: String(formData.get("operator")),
       numberTicket: Number(formData.get("numberTicket")),
       titleTicket: String(formData.get("titleTicket")),
-      date: new Date(formData.get("date") as string),
+      date: String(formData.get("date")),
       timeStart: String(formData.get("timeStart")),
       timeStop: String(formData.get("timeStop")),
       nameBusiness: String(formData.get("nameBusiness")),
@@ -53,11 +85,16 @@ const Rep = () => {
     // Chame o método de execução
     registerInstance.execute();
 
-    // Limpar o formulário após o envio
-    if (formRef.current) {
-      formRef.current.reset();
-    }
+    //
+    push(`/copy/${formData.get("type")}/${formData.get("numberTicket")}`);
   };
+
+  useEffect(() => {
+    if (searchParams.has("ticket")) {
+      loadData();
+    }
+  }, []);
+
   return (
     <div className="px-4 pb-10 ">
       <div className="">
@@ -77,7 +114,7 @@ const Rep = () => {
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit}>
-        <input type="hidden" name="type" value="remote" />
+        <input type="hidden" name="type" value="remoto" />
         <div className="mb-3">
           <div className="">
             <Label>Hora Inicial:</Label>
@@ -88,6 +125,7 @@ const Rep = () => {
                 onChange={(e) => {
                   setTimeStart(e.target.value);
                 }}
+                required
                 value={timeStart}
               />
             </div>
@@ -101,6 +139,7 @@ const Rep = () => {
                 onChange={(e) => {
                   setTimeStop(e.target.value);
                 }}
+                required
                 type="text"
               />
             </div>
@@ -108,23 +147,28 @@ const Rep = () => {
         </div>
         <div className="mb-3">
           <Label>Numero ticket:</Label>
-          <Input name="numberTicket" type="number" />
+          <Input
+            required
+            name="numberTicket"
+            defaultValue={numberTicket}
+            type="number"
+          />
         </div>
         <div className="mb-3">
           <Label>Titulo ticket:</Label>
-          <Input name="titleTicket" type="text" />
+          <Input name="titleTicket" defaultValue={titleTicket} type="text" />
         </div>
         <div className="mb-3">
           <Label>Data:</Label>
-          <Input name="date" type="date" />
+          <Input name="date" type="date" defaultValue={formatDateUI(date)} />
         </div>
         <div className="mb-3">
           <Label>Técnico:</Label>
-          <Input name="operator" type="text" />
+          <Input required name="operator" defaultValue={operator} type="text" />
         </div>
         <div className="mb-3">
           <Label>Empresa Contratante:</Label>
-          <Input name="nameBusiness" type="text" />
+          <Input name="nameBusiness" type="text" defaultValue={nameBusiness} />
         </div>
         <div className="mb-3">
           <Label>Descreva as ações realizadas:</Label>
@@ -132,6 +176,7 @@ const Rep = () => {
             name="completedActions"
             rows={10}
             placeholder="Descreva as  ações realizadas"
+            defaultValue={completedActions}
           />
         </div>
         <div className="mb-3">
@@ -140,6 +185,7 @@ const Rep = () => {
             name="pendingOrNextActions"
             rows={10}
             placeholder="Descreva as não conformidades."
+            defaultValue={pendingOrNextActions}
           />
         </div>
         <Button type="submit" className="bg-green-600">

@@ -2,12 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import RemoteList from "@/services/remoto/remote-list/remoteList";
-import PreventiList from "@/services/rep/preventive-list/preventiveList";
+import GetRemoteId from "@/services/remoto/list-single/GetRemoteId";
+import GetRepPreventiveId from "@/services/rep/list-single/GetRepPreventiveId";
 import { preventivaRepTemplate } from "@/templates/preventivaRep";
 import { remoteTemplate } from "@/templates/remote";
 import React, { useEffect, useState } from "react";
-import { Copy } from "lucide-react";
+import { ClipboardPen, Copy } from "lucide-react";
+import Link from "next/link";
 
 interface UrlParams {
   params: {
@@ -18,16 +19,28 @@ interface UrlParams {
 
 const CopyPage = ({ params }: UrlParams) => {
   const [text, setText] = useState("");
+  const [type, setType] = useState("");
+  const [ticket, setTicket] = useState("");
 
   function getCopy() {
     switch (params.type) {
-      case "preventive":
-        const preventlist = new PreventiList(Number(params.id)).execute();
+      case "rep":
+        const preventlist = new GetRepPreventiveId(Number(params.id)).execute();
+        //@ts-ignore
+        setTicket(preventlist.numberTicket);
+        //@ts-ignore
+        setType(preventlist.type);
+        //@ts-ignore
         setText(preventivaRepTemplate(preventlist));
 
         break;
-      case "remote":
-        const remotelist = new RemoteList(Number(params.id)).execute();
+      case "remoto":
+        const remotelist = new GetRemoteId(Number(params.id)).execute();
+        //@ts-ignore
+        setTicket(remotelist.numberTicket);
+        //@ts-ignore
+        setType(remotelist.type);
+        //@ts-ignore
         setText(remoteTemplate(remotelist));
         break;
       default:
@@ -52,6 +65,11 @@ const CopyPage = ({ params }: UrlParams) => {
   return (
     <>
       <div className="px-2 relative">
+        <Button asChild className="bg-blue-400">
+          <Link href={`/${type}?ticket=${ticket}`}>
+            <ClipboardPen />
+          </Link>
+        </Button>
         <Textarea
           onChange={(e) => {
             setText(e.target.value);

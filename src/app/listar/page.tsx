@@ -1,5 +1,5 @@
 "use client";
-import List from "@/services/rep/list/List";
+import ListAll from "@/services/list/ListAll";
 import React, { useEffect, useState } from "react";
 import {
   Table,
@@ -12,12 +12,13 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ClipboardList, FilePenLine } from "lucide-react";
 
 const ListPage = () => {
   const [listdata, setListData] = useState([]);
 
   useEffect(() => {
-    const list = new List().execute();
+    const list = new ListAll().execute();
     setListData(list);
   }, []);
 
@@ -39,10 +40,15 @@ const ListPage = () => {
                 <TableRow key={item.numberTicket}>
                   <TableCell>{item.numberTicket}</TableCell>
                   <TableCell className="w-full">{item.titleTicket}</TableCell>
-                  <TableCell>
+                  <TableCell className="flex gap-2">
+                    <Button className="bg-blue-400" asChild>
+                      <Link href={`/${item.type}?ticket=${item.numberTicket}`}>
+                        <FilePenLine />
+                      </Link>
+                    </Button>
                     <Button className="bg-blue-400" asChild>
                       <Link href={`/copy/${item.type}/${item.numberTicket}`}>
-                        Ver copy
+                        <ClipboardList />
                       </Link>
                     </Button>
                   </TableCell>

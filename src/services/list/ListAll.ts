@@ -1,6 +1,6 @@
-import Base from "../base/Base";
+import Base from "../rep/base/Base";
 
-class List extends Base {
+class ListAll extends Base {
   execute() {
     const data = localStorage.getItem("writerReportApp");
 
@@ -15,4 +15,4 @@ class List extends Base {
   }
 }
 
-export default List;
+export default ListAll;

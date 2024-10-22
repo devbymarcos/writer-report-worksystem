@@ -14,11 +14,13 @@ import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Register from "@/services/rep/register/Register";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const Rep = () => {
   const [timeStart, setTimeStart] = useState<string>("");
   const [timeStop, setTimeStop] = useState<string>("");
   const formRef = useRef<HTMLFormElement>(null);
+  const { push } = useRouter();
 
   function timeStartexecute() {
     const now = new Date();
@@ -101,10 +103,7 @@ const Rep = () => {
     // Chame o método de execução
     registerInstance.execute();
 
-    // Limpar o formulário após o envio
-    if (formRef.current) {
-      formRef.current.reset();
-    }
+    push(`/copy/${formData.get("type")}/${formData.get("numberTicket")}`);
   };
   return (
     <div className="px-4 pb-10 ">
@@ -125,7 +124,7 @@ const Rep = () => {
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit}>
-        <input type="hidden" name="type" value="preventive" />
+        <input type="hidden" name="type" value="rep" />
         <div className="mb-3">
           <div className="">
             <Label>Hora Inicial:</Label>
@@ -170,7 +169,7 @@ const Rep = () => {
         </div>
         <div className="mb-3">
           <Label>Técnico:</Label>
-          <Input name="operator" type="text" />
+          <Input required name="operator" type="text" />
         </div>
         <div className="mb-3">
           <Label>Empresa Contratante:</Label>

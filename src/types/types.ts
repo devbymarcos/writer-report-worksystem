@@ -36,7 +36,7 @@ export interface IRemoto {
   operator: string;
   numberTicket: number;
   titleTicket: string;
-  date: Date; // Alterado para string para compatibilidade com input type="date"
+  date: string; // Alterado para string para compatibilidade com input type="date"
   timeStart: string;
   timeStop: string;
   nameBusiness: string;

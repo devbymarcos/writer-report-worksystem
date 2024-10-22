@@ -1,30 +1,19 @@
 import Base from "../base/Base";
 import { IRemoto } from "@/types/types";
 
-class RemoteList extends Base {
+class GetRemoteId extends Base {
   constructor(numberTicket: number) {
     super();
     this.numberTicket = numberTicket;
   }
 
-  execute(): IRemoto {
+  execute(): IRemoto | null {
     // Recupera os dados do localStorage
     const storedData = localStorage.getItem("writerReportApp");
 
     // Verifica se existe algo armazenado
     if (!storedData) {
-      return {
-        type: "",
-        operator: "",
-        numberTicket: 0,
-        titleTicket: "",
-        date: new Date(),
-        timeStart: "",
-        timeStop: "",
-        nameBusiness: "",
-        completedActions: "",
-        pendingOrNextActions: "",
-      };
+      return null;
     }
 
     // Converte o JSON armazenado de volta para um array de objetos
@@ -40,4 +29,4 @@ class RemoteList extends Base {
   }
 }
 
-export default RemoteList;
+export default GetRemoteId;

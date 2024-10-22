@@ -32,8 +32,14 @@ class Register extends Base {
       localStorage.getItem("writerReportApp") || "[]"
     );
 
-    existingRecords.push({
+    // Verifica se existe um objeto com o mesmo numberTicket
+    const updatedRecords = existingRecords.filter(
+      (record: any) => record.numberTicket !== this.numberTicket
+    );
+
+    updatedRecords.push({
       type: this.type,
+      operator: this.operator,
       numberTicket: this.numberTicket,
       titleTicket: this.titleTicket,
       date: this.date,
@@ -44,7 +50,7 @@ class Register extends Base {
       pendingOrNextActions: this.pendingOrNextActions,
     });
 
-    localStorage.setItem("writerReportApp", JSON.stringify(existingRecords));
+    localStorage.setItem("writerReportApp", JSON.stringify(updatedRecords));
   }
 }
 
