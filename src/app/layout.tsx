@@ -3,7 +3,6 @@ import Nav from "@/components/nav/Nav";
 import "./globals.css";
 import { Header } from "@/components/header/Header";
 import { useState } from "react";
-import { Toaster } from "@/components/ui/sonner";
 
 export default function RootLayout({
   children,
@@ -21,7 +20,6 @@ export default function RootLayout({
         <Header onClick={openSideBar} />
         <Nav isOpen={isOpen} onClick={openSideBar} />
         <section className=" container  pt-11 ">{children}</section>
-        <Toaster richColors duration={1000} />
       </body>
     </html>
   );

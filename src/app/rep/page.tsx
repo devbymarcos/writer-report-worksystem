@@ -10,7 +10,6 @@ import Register from "@/services/rep/register/Register";
 import { useSearchParams, useRouter } from "next/navigation";
 import GetRepPreventiveId from "@/services/rep/list-single/GetRepPreventiveId";
 import { formatDateUI } from "@/functions/formatDate";
-import { Checkbox } from "@/components/ui/checkbox";
 
 const Rep = () => {
   const searchParams = useSearchParams();
@@ -262,30 +261,56 @@ const Rep = () => {
         </div>
         <div className="mb-3">
           <Label>Numero ticket:</Label>
-          <Input name="numberTicket" value={numberTicket} type="number" />
+          <Input
+            name="numberTicket"
+            value={numberTicket}
+            onChange={(e) => setNumberTicket(Number(e.target.value))}
+            type="number"
+          />
         </div>
         <div className="mb-3">
           <Label>Titulo ticket:</Label>
-          <Input name="titleTicket" value={titleTicket} type="text" />
+          <Input
+            name="titleTicket"
+            value={titleTicket}
+            onChange={(e) => setTitleTicket(e.target.value)}
+            type="text"
+          />
         </div>
         <div className="mb-3">
           <Label>Data:</Label>
-          <Input name="date" type="date" value={formatDateUI(date)} />
+          <Input
+            name="date"
+            type="date"
+            onChange={(e) => setDate(e.target.value)}
+            value={formatDateUI(date)}
+          />
         </div>
         <div className="mb-3">
           <Label>Técnico:</Label>
-          <Input required name="operator" value={operator} type="text" />
+          <Input
+            required
+            name="operator"
+            value={operator}
+            onChange={(e) => setOperator(e.target.value)}
+            type="text"
+          />
         </div>
         <div className="mb-3">
           <Label>Empresa Contratante:</Label>
-          <Input name="nameBusiness" type="text" value={nameBusiness} />
+          <Input
+            name="nameBusiness"
+            type="text"
+            onChange={(e) => setNameBusiness(e.target.value)}
+            value={nameBusiness}
+          />
         </div>
         <div className="mb-3">
           <p className="mb-2 font-bold">Estado de Funcionamento:</p>
           <Select
             id="options"
             value={stateOperation}
-            onChange={(e) => setStateOperation(e.target.value)} // Atualiza o estado quando o valor muda
+            onChange={(e) => setStateOperation(e.target.value)}
           >
             <option value="" disabled>
               Selecione...
@@ -293,7 +318,7 @@ const Rep = () => {
             <option value="Em plena operação">Em plena operação</option>
             <option value="Em operação parcial">Em operação parcial</option>
             <option value="Desligado ou desativado">
-              Desligado ou desativado"
+              Desligado ou desativado
             </option>
           </Select>
         </div>
@@ -315,15 +340,30 @@ const Rep = () => {
         </div>
         <div className="mb-3">
           <Label>IP:</Label>
-          <Input name="ip" type="text" value={ip} />
+          <Input
+            name="ip"
+            type="text"
+            value={ip}
+            onChange={(e) => setIp(e.target.value)}
+          />
         </div>
         <div className="mb-3">
           <Label>Numero de série:</Label>
-          <Input name="ns" value={ns} type="ns" />
+          <Input
+            name="ns"
+            value={ns}
+            type="number"
+            onChange={(e) => setNs(Number(e.target.value))}
+          />
         </div>
         <div className="mb-3">
           <Label>Lacre Fiscal:</Label>
-          <Input name="fiscalSeal" type="number" value={fiscalSeal} />
+          <Input
+            name="fiscalSeal"
+            type="number"
+            onChange={(e) => setFiscalSeal(Number(e.target.value))}
+            value={fiscalSeal}
+          />
         </div>
         <div className="my-11">
           <h2 className="font-bold text-lg mb-4">Ações de Limpeza</h2>
@@ -426,9 +466,11 @@ const Rep = () => {
             <p className="mb-2 ">Leitores (carão e biometria):</p>
             <Select
               name="inspectionKeyboard"
-              value={inspectionKeyboard}
-              onChange={(e: any) => setInspectionKeyboard(e.target.value)} // Atualiza o estado quando o valor muda
-              className="w-[180px]" // Adiciona uma classe para estilo, se necessário
+              value={inspectionReadersCardAndBiometrics}
+              onChange={(e: any) =>
+                setInspectionReadersCardAndBiometrics(e.target.value)
+              }
+              className="w-[180px]"
             >
               <option value="" disabled>
                 Escolha...
@@ -558,7 +600,12 @@ const Rep = () => {
         </div>
         <div className="mb-3">
           <Label>Numero lacre Work:</Label>
-          <Input name="sealWork" type="text" value={sealWork} />
+          <Input
+            name="sealWork"
+            type="text"
+            value={sealWork}
+            onChange={(e) => setSealWork(e.target.value)}
+          />
         </div>
         <div className="mb-3">
           <Label>Descreva as não conformidades:</Label>
@@ -567,6 +614,7 @@ const Rep = () => {
             rows={10}
             placeholder="Descreva as não conformidades."
             value={nonConformitiesDescription}
+            onChange={(e) => setNonConformitiesDescription(e.target.value)}
           />
         </div>
         <div className="mb-3">
@@ -576,6 +624,7 @@ const Rep = () => {
             rows={10}
             placeholder="Descreva as não conformidades."
             value={improvementSuggestions}
+            onChange={(e) => setImprovementSuggestions(e.target.value)}
           />
         </div>
         <div className="mb-3  md:relative fixed bottom-1 ">
