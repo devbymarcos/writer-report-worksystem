@@ -470,9 +470,11 @@ const Rep = () => {
             placeholder="Descreva as não conformidades."
           />
         </div>
-        <Button type="submit" className="bg-green-600">
-          Salvar
-        </Button>
+        <div className="mb-3  md:relative fixed bottom-1 ">
+          <Button type="submit" className="bg-green-600">
+            Salvar
+          </Button>
+        </div>
       </form>
     </div>
   );
