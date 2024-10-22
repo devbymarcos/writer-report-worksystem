@@ -291,7 +291,7 @@ const Rep = () => {
           <Checkbox
             name="stateOperation"
             value="ok"
-            checked={formData.stateOperation === "Em plena operação"}
+            checked={formData.stateOperation === "Ok"}
           />
           <Select name="stateOperation" defaultValue={formData.stateOperation}>
             <SelectTrigger className="w-[180px]">

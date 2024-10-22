@@ -4,6 +4,7 @@ import { IPreventiva } from "@/types/types";
 class Register extends Base {
   constructor({
     type,
+    operator,
     numberTicket,
     titleTicket,
     date,
@@ -35,6 +36,7 @@ class Register extends Base {
   }: IPreventiva) {
     super();
     this.type = type;
+    this.operator = operator;
     this.numberTicket = numberTicket;
     this.titleTicket = titleTicket;
     this.date = date;
@@ -81,6 +83,7 @@ class Register extends Base {
 
     updatedRecords.push({
       type: this.type,
+      operator: this.operator,
       numberTicket: this.numberTicket,
       titleTicket: this.titleTicket,
       date: this.date,

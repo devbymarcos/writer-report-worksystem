@@ -3,7 +3,7 @@ export interface IPreventiva {
   operator: string;
   numberTicket: number;
   titleTicket: string;
-  date: Date;
+  date: string;
   timeStart: string;
   timeStop: string;
   nameBusiness: string;

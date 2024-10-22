@@ -17,7 +17,6 @@ const Rep = () => {
 
   const [timeStart, setTimeStart] = useState<string>("");
   const [timeStop, setTimeStop] = useState<string>("");
-  const [type, setType] = useState<string>("");
   const [operator, setOperator] = useState<string>("");
   const [numberTicket, setNumberTicket] = useState<number>();
   const [titleTicket, setTitleTicket] = useState<string>("");
@@ -31,7 +30,6 @@ const Rep = () => {
       Number(searchParams.get("ticket"))
     ).execute();
     if (ticketData) {
-      setType(ticketData.type);
       setOperator(ticketData.operator);
       setNumberTicket(ticketData.numberTicket);
       setTitleTicket(ticketData.titleTicket);

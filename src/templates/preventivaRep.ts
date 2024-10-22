@@ -6,7 +6,7 @@ export function preventivaRepTemplate(text: IPreventiva) {
 Chamado/Cliente: ${text.numberTicket} - ${text.titleTicket}
 Data: ${formatDate(String(text.date))}
 Horário: ${text.timeStart} as ${text.timeStop}
-Técnico: Marcos Lopes 
+Técnico:  ${text.operator}
 Tipo: Preventiva
 Acompanhou:
 
