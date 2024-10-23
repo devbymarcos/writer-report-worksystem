@@ -1,6 +1,6 @@
 export const dataNav = [
   {
-    title: "Listar",
+    title: "Listar relatórios",
     path: "/listar",
   },
   {
@@ -8,7 +8,7 @@ export const dataNav = [
     path: "/rep",
   },
   {
-    title: "Remoto",
+    title: "Atendimento Remoto",
     path: "/remoto",
   },
 ];

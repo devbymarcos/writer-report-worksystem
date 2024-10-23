@@ -8,7 +8,7 @@ Data: ${formatDate(String(text.date))}
 Horário: ${text.timeStart} as ${text.timeStop}
 Técnico: ${text.operator}
 Tipo: Atendimento Remoto
-Acompanhou:
+
 
 1 - Descrição das ações realizadas:
 

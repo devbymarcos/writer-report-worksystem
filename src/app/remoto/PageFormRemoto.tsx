@@ -8,6 +8,7 @@ import Register from "@/services/remoto/register/Register";
 import { useSearchParams, useRouter } from "next/navigation";
 import GetRemoteId from "@/services/remoto/list-single/GetRemoteId";
 import { formatDateUI } from "@/functions/formatDate";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const PageFormRemoto = () => {
   const searchParams = useSearchParams();
@@ -111,82 +112,112 @@ const PageFormRemoto = () => {
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit}>
-        <input type="hidden" name="type" value="remoto" />
-        <div className="mb-3">
-          <div className="">
-            <Label>Hora Inicial:</Label>
-            <div className="flex gap-2 items-center">
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="font-bold">Dados iniciais:</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <input type="hidden" name="type" value="remoto" />
+            <div className="mb-3">
+              <div className="">
+                <Label>Hora Inicial:</Label>
+                <div className="flex gap-2 items-center">
+                  <Input
+                    type="text"
+                    name="timeStart"
+                    onChange={(e) => {
+                      setTimeStart(e.target.value);
+                    }}
+                    required
+                    value={timeStart}
+                  />
+                </div>
+              </div>
+              <div className="">
+                <Label>Hora Final:</Label>
+                <div className="flex gap-2 items-center">
+                  <Input
+                    name="timeStop"
+                    value={timeStop}
+                    onChange={(e) => {
+                      setTimeStop(e.target.value);
+                    }}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mb-3">
+              <Label>Numero ticket:</Label>
               <Input
-                type="text"
-                name="timeStart"
-                onChange={(e) => {
-                  setTimeStart(e.target.value);
-                }}
                 required
-                value={timeStart}
+                name="numberTicket"
+                defaultValue={numberTicket}
+                type="number"
               />
             </div>
-          </div>
-          <div className="">
-            <Label>Hora Final:</Label>
-            <div className="flex gap-2 items-center">
+            <div className="mb-3">
+              <Label>Titulo ticket:</Label>
               <Input
-                name="timeStop"
-                value={timeStop}
-                onChange={(e) => {
-                  setTimeStop(e.target.value);
-                }}
-                required
+                name="titleTicket"
+                defaultValue={titleTicket}
                 type="text"
               />
             </div>
-          </div>
-        </div>
-        <div className="mb-3">
-          <Label>Numero ticket:</Label>
-          <Input
-            required
-            name="numberTicket"
-            defaultValue={numberTicket}
-            type="number"
-          />
-        </div>
-        <div className="mb-3">
-          <Label>Titulo ticket:</Label>
-          <Input name="titleTicket" defaultValue={titleTicket} type="text" />
-        </div>
-        <div className="mb-3">
-          <Label>Data:</Label>
-          <Input name="date" type="date" defaultValue={formatDateUI(date)} />
-        </div>
-        <div className="mb-3">
-          <Label>Técnico:</Label>
-          <Input required name="operator" defaultValue={operator} type="text" />
-        </div>
-        <div className="mb-3">
-          <Label>Empresa Contratante:</Label>
-          <Input name="nameBusiness" type="text" defaultValue={nameBusiness} />
-        </div>
-        <div className="mb-3">
-          <Label>Descreva as ações realizadas:</Label>
-          <Textarea
-            name="completedActions"
-            rows={10}
-            placeholder="Descreva as  ações realizadas"
-            defaultValue={completedActions}
-          />
-        </div>
-        <div className="mb-3">
-          <Label>Pendencias ou próximas etapas:</Label>
-          <Textarea
-            name="pendingOrNextActions"
-            rows={10}
-            placeholder="Descreva as não conformidades."
-            defaultValue={pendingOrNextActions}
-          />
-        </div>
-        <Button type="submit" className="bg-green-600">
-          Salvar
+            <div className="mb-3">
+              <Label>Data:</Label>
+              <Input
+                name="date"
+                type="date"
+                defaultValue={formatDateUI(date)}
+              />
+            </div>
+            <div className="mb-3">
+              <Label>Técnico:</Label>
+              <Input
+                required
+                name="operator"
+                defaultValue={operator}
+                type="text"
+              />
+            </div>
+            <div className="mb-3">
+              <Label>Empresa Contratante:</Label>
+              <Input
+                name="nameBusiness"
+                type="text"
+                defaultValue={nameBusiness}
+              />
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="font-bold">Descreva:</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="mb-3">
+              <Label>Descreva as ações realizadas:</Label>
+              <Textarea
+                name="completedActions"
+                rows={20}
+                placeholder=""
+                defaultValue={completedActions}
+              />
+            </div>
+            <div className="mb-3">
+              <Label>Pendencias ou próximas etapas:</Label>
+              <Textarea
+                name="pendingOrNextActions"
+                rows={10}
+                placeholder=""
+                defaultValue={pendingOrNextActions}
+              />
+            </div>
+          </CardContent>
+        </Card>
+        <Button type="submit" className="bg-green-600 h-11 w-full">
+          Registar
         </Button>
       </form>
     </div>
