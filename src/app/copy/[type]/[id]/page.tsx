@@ -65,7 +65,7 @@ const CopyPage = ({ params }: UrlParams) => {
   return (
     <>
       <div className="px-2 relative">
-        <Button asChild className="bg-blue-400 absolute right-2">
+        <Button asChild variant="outline" className=" absolute right-4 top-2">
           <Link href={`/${type}?ticket=${ticket}`}>
             <ClipboardPen />
           </Link>
@@ -79,11 +79,11 @@ const CopyPage = ({ params }: UrlParams) => {
         />
         <Button
           variant="outline"
-          className="  fixed bottom-32 bg-indigo-400 text-white right-6 h-11"
+          className="w-full  bg-blue-400 text-white h-11"
           onClick={copyToClipboard}
         >
           <Copy />
-          copiar
+          Copiar
         </Button>
       </div>
     </>
