@@ -12,10 +12,10 @@ Tipo: Atendimento Remoto
 
 1 - Descrição das ações realizadas:
 
-  ${text.completedActions}
+${text.completedActions}
     
-2 - Pendencias ou próximas ações:
+2 - Pendencias ou próximas etapas:
 
-  ${text.pendingOrNextActions}
+${text.pendingOrNextActions}
 `;
 }

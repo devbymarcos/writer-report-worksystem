@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Register from "@/services/rep/register/Register";
 import { useSearchParams, useRouter } from "next/navigation";
 import GetRepPreventiveId from "@/services/rep/list-single/GetRepPreventiveId";
-import { formatDateUI } from "@/functions/formatDate";
+import { formatDateInput } from "@/functions/formatDate";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const PageFormRep = () => {
@@ -286,7 +286,7 @@ const PageFormRep = () => {
                 name="date"
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
-                value={formatDateUI(date)}
+                value={formatDateInput(date)}
               />
             </div>
             <div className="mb-3">
