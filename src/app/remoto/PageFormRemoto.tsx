@@ -20,7 +20,10 @@ const PageFormRemoto = () => {
   const [operator, setOperator] = useState<string>("");
   const [numberTicket, setNumberTicket] = useState<number>();
   const [titleTicket, setTitleTicket] = useState<string>("");
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<string>(() => {
+    const today = new Date();
+    return today.toISOString().split("T")[0];
+  });
   const [nameBusiness, setNameBusiness] = useState<string>("");
   const [completedActions, setCompletedActions] = useState<string>("");
   const [pendingOrNextActions, setPendingOrNextActions] = useState<string>("");
@@ -118,7 +121,7 @@ const PageFormRemoto = () => {
           </CardHeader>
           <CardContent>
             <input type="hidden" name="type" value="remoto" />
-            <div className="mb-3">
+            <div className="grid grid-cols-2 gap-4">
               <div className="">
                 <Label>Hora Inicial:</Label>
                 <div className="flex gap-2 items-center">
