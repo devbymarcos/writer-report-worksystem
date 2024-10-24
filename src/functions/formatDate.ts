@@ -3,7 +3,7 @@ export function formatDate(dateString: string) {
   return formattedDate;
 }
 
-export function formatDateUI(dateString: string): string {
+export function formatDateInput(dateString: string): string {
   if (dateString) {
     const formattedDate = dateString.split("T")[0];
     return formattedDate;

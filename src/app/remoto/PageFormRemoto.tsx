@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Register from "@/services/remoto/register/Register";
 import { useSearchParams, useRouter } from "next/navigation";
 import GetRemoteId from "@/services/remoto/list-single/GetRemoteId";
-import { formatDateUI } from "@/functions/formatDate";
+import { formatDateInput } from "@/functions/formatDate";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const PageFormRemoto = () => {
@@ -169,7 +169,7 @@ const PageFormRemoto = () => {
               <Input
                 name="date"
                 type="date"
-                defaultValue={formatDateUI(date)}
+                defaultValue={formatDateInput(date)}
               />
             </div>
             <div className="mb-3">

@@ -65,26 +65,23 @@ const CopyPage = ({ params }: UrlParams) => {
   return (
     <>
       <div className="px-2 relative">
-        <Button asChild variant="outline" className=" absolute right-4 top-2">
-          <Link href={`/${type}?ticket=${ticket}`}>
-            <ClipboardPen />
-          </Link>
-        </Button>
+        <div className="absolute right-4 top-2 flex gap-4">
+          <Button asChild variant="outline" className=" ">
+            <Link href={`/${type}?ticket=${ticket}`}>
+              <ClipboardPen />
+            </Link>
+          </Button>
+          <Button variant="outline" onClick={copyToClipboard}>
+            <Copy />
+          </Button>
+        </div>
         <Textarea
           onChange={(e) => {
             setText(e.target.value);
           }}
-          className="h-screen  mb-4"
+          className="h-screen  mb-4 pt-12"
           defaultValue={text}
         />
-        <Button
-          variant="outline"
-          className="w-full  bg-blue-400 text-white h-11"
-          onClick={copyToClipboard}
-        >
-          <Copy />
-          Copiar
-        </Button>
       </div>
     </>
   );

@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ClipboardList, FilePenLine } from "lucide-react";
+import { formatDate } from "@/functions/formatDate";
 
 const ListPage = () => {
   const [listdata, setListData] = useState([]);
@@ -25,13 +26,14 @@ const ListPage = () => {
   return (
     <>
       <div className="px-3">
-        <Table>
+        <Table className="min-w-full">
           <TableCaption>List dos seus relatorios.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">Ticket</TableHead>
+              <TableHead>Ticket</TableHead>
+              <TableHead>Data</TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>Acão</TableHead>
+              <TableHead className="text-right">Acão</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -39,8 +41,11 @@ const ListPage = () => {
               return (
                 <TableRow key={item.numberTicket}>
                   <TableCell>{item.numberTicket}</TableCell>
-                  <TableCell className="w-full">{item.titleTicket}</TableCell>
-                  <TableCell className="flex gap-2">
+                  <TableCell>{formatDate(item.date)}</TableCell>
+                  <TableCell className="overflow-hidden whitespace-nowrap">
+                    {item.titleTicket}
+                  </TableCell>
+                  <TableCell className="flex items-end justify-end text-right gap-2">
                     <Button className="bg-blue-400" asChild>
                       <Link href={`/${item.type}?ticket=${item.numberTicket}`}>
                         <FilePenLine />
